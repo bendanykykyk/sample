@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery-1.7.1.js"></script>
+<script th:inline="javascript">
+    $(document).ready(function() {
+
+        //添加用户信息,点击事件
+        $('#submit_button').click(function() {
+
+            var user={};
+            user.name=$("#name").val();
+
+            var description = "";
+            for(var i in user){
+                var property=user[i];
+                description+=i+" = "+property+"\n";
+            }
+            console.log(description);
+
+            $.ajax({
+                type: "POST",
+                url: "/query/query",
+                dataType: "json",
+                data:JSON.stringify(user),
+                contentType : "application/json",
+                success: function (data) {
+                    document.getElementById("age").innerText = data.age
+                    console.log(data)
+
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+
+
+        })
+    })
+</script>
+<body>
+<p>
+    <input type="text"  id="name"/>
+    <input type="button" id="submit_button">
+    <span id="age" th:text="${user.age}"></span>
+    </div>
+
+</p>
+</body>
+</html>
