@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery-1.7.1.js"></script>
+<script>
+
+    function testAjax() {
+        var name = document.getElementById("name").value;
+        var url = "/yourUrl?yourDataName=" + name;
+        $.ajax({
+            type: "get",
+            url: url,
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    }
+</script>
+<body>
+<input type="text" id="name"/>
+<button onclick="testAjax()">按钮</button>
+</body>
+</html>
