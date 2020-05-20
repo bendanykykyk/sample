@@ -10,12 +10,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
 public class MessageController {
+
+
     @Autowired
     private MessageRepository messageRepository;
+
+    //后端解决跨域方法
+    public void UploadUserAvatars(HttpServletRequest request,HttpServletResponse response) throws Exception{
+        // 指定允许其他域名访问
+        response.addHeader("Access-Control-Allow-Origin","*");
+        // 响应类型
+        response.addHeader("Access-Control-Allow-Methods","POST");
+        // 响应头设置
+        response.addHeader("Access-Control-Allow-Headers","x-requested-with,content-type");
+        //响应内容支持中文
+        response.setContentType("text/html;charset=utf-8");
+    }
 
 
     @PostMapping("/insertTuCaoMessage")
@@ -35,11 +50,15 @@ public class MessageController {
 
     @PostMapping("/queryTuCaoMessage")
     @ResponseBody
-    public Iterable<Message> queryTuCaoMessage(HttpServletRequest request) {
+    public Iterable<Message> queryTuCaoMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         Iterable<Message> message = messageRepository.findAll();
 //        System.out.println(user.toString());
         System.out.println(message.toString());
+
+        //解决跨域
+        UploadUserAvatars(request,response);
+
         return messageRepository.findAll();
 
     }
