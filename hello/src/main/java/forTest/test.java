@@ -36,18 +36,9 @@ public class test {
 
         String s =toMyString(
                 "{\n" +
-                        "\t\"coupon_interface_no\": \"ps6001\",\n" +
-                        "\t\"user_id\": \"PencYH6BXEbobm35WNT5nFyPqDT4XanOHB1H7dCkEw6bncg64tLk9e/BFihBwTHJ\",\n" +
-                        "\t\"mode\": \"unionpay\",\n" +
-                        "\t\"out_coupon_no\": \"10086\",\n" +
-                        "\t\"out_order_no\": \"1585294679558\",\n" +
-                        "\t\"user_info\": {\n" +
-                        "\t\t\"phone\": \"18758580115\"\n" +
-                        "\t},\n" +
-                        "\t\"exchange_list\": [{\n" +
-                        "\t\t\"activity_coupon_no\": \"6656022138153209856\",\n" +
-                        "\t\t\"exchange_count\": 1\n" +
-                        "\t}]\n" +
+                        "\t\"import_catalog_id\": \"6572290001890058240\",\n" +
+                        "\t\"coupon_ids\": [\"6674220954253660160\"],\n" +
+                        "\t\"app_id\": \"6572290001458044928\"\n" +
                         "}"
         );
 
@@ -58,3 +49,4 @@ public class test {
 
     }
 }
+

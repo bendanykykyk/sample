@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.hello.entity.Message;
 import com.example.hello.repository.MessageRepository;
 import com.example.hello.utils.FileUtil;
+import com.example.hello.utils.HttpRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,6 +62,16 @@ public class MessageController {
 
         return messageRepository.findAll();
 
+    }
+
+
+    @PostMapping("/qrcode")
+    @ResponseBody
+    public String qrcode(HttpServletRequest request) {
+        String url = "http://apis.juhe.cn/qrcode/api";
+        String params = "key=a5d6fad65a8123b08da2a45baf8e1be1&type=2&fgcolor=00b7ee&w=90&m=5&text=hello%20world!";
+
+        return HttpRequestUtil.doPost(url,params);
     }
 
 
